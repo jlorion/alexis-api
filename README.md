@@ -1,6 +1,6 @@
 # Getting Started
 
-This is the setup guide for minjee systems backend
+This is the setup guide for alexis api backend
 
 ## Environment
 
@@ -18,7 +18,7 @@ source name_of_environment/Scripts/activate
 ```cmd
 name_of_environment\Scripts\activate
 ```
-###### note: when running directory commands in cmd use "\" instead of "/"
+###### note: when running directory commands in cmd use "\\" instead of "/"
 
 ## Python packages
 ###### note: run this commands with the virtual environment enables as per instructions above.
