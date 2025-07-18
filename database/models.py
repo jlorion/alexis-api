@@ -10,7 +10,8 @@ from datetime import date
 
 class Clients(SQLModel, table=True):
     id: UUID = Field(default_factory=lambda: uuid4(), unique=True, primary_key=True)
-    name: str
+    first_name: str
+    last_name: str
     address: str
     contact: str
     email: EmailStr = Field(unique=True, index=True, max_length=255)
@@ -20,20 +21,20 @@ class Services(SQLModel, table=True):
     name: str
     rate: Decimal = Field(default=0, max_digits=10, decimal_places=3)
 
+    
+
 class Booking(SQLModel, table=True):
     id: UUID = Field(default_factory=lambda: uuid4(), unique=True, primary_key=True)
     booking_date: date = Field(unique=True)
-    hours_rendered: Decimal = Field(default=0, max_digits=10, decimal_places=3)
     client_id: UUID
-    total: Decimal = Field(default=0, max_digits=10, decimal_places=3)
     
 
 class Services_list(SQLModel, table=True):
     id: UUID = Field(default_factory=lambda: uuid4(), unique=True, primary_key=True)
-    name: str
     booking_id: UUID
     services_id:  UUID
-    service_cost: Decimal= Field(default=0, max_digits=10, decimal_places=3)
+    hours_rendered: Decimal
+    service_cost: Decimal= Field(default=0, max_digits=10, decimal_places=3, nullable=True)
 
 class Inventory(SQLModel, table=True):
     id: UUID = Field(default_factory=lambda: uuid4(), unique=True, primary_key=True)
@@ -47,3 +48,4 @@ class Transaction(SQLModel, table=True):
     transaction_date: date
     payment: Decimal = Field(default=0, max_digits=10, decimal_places=3) 
     change: Decimal = Field(default=0, max_digits=10, decimal_places=3)
+    total: Decimal = Field(default=0, max_digits=10, decimal_places=3)
