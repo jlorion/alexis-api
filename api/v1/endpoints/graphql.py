@@ -39,7 +39,7 @@ class Query:
     async def get_client(self, info, id: UUID) -> ClientsType:
         db: AsyncSession = info.context["session"]
         rslt = await db.exec(select(Clients).where(Clients.id == id))
-        client = rslt.all()
+        client = rslt.first()
         return ClientsType(**client.dict())
 
 schema = strawberry.Schema(Query)

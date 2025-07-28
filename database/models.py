@@ -21,8 +21,6 @@ class Services(SQLModel, table=True):
     name: str
     rate: Decimal = Field(default=0, max_digits=10, decimal_places=3)
 
-    
-
 class Booking(SQLModel, table=True):
     id: UUID = Field(default_factory=lambda: uuid4(), unique=True, primary_key=True)
     booking_date: date = Field(unique=True)
